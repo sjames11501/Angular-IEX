@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ResponseIexProfile } from './interfaces.iex';
 import { ResponseIexTops } from './interfaces.iex';
+import { iexEndPointType } from './iex.endpoints';
 
 @Injectable({
   providedIn: 'root'
@@ -11,42 +12,34 @@ export class IexService {
   private token = 'pk_985dc1b2080147c2948e4bd7acb90602';
 
 
-  // endpoint urls//
-  public profileURL = 'https://cloud.iexapis.com/stable/stock/{symbol}/company{token}';
-  public iexPreviousURL = 'https://cloud.iexapis.com/stable/stock/{symbol}/previous{token}';
-  public topsURL = 'https://cloud.iexapis.com/stable/tops?symbols=';
-  ////////////////////
-  private tokenSuffix = '&token=' + this.token;
-  private topsResponse: Observable<ResponseIexTops>;
-
   constructor(private httpClient: HttpClient) { }
 
+  private getApiUrl(symbol: any, endPointType: iexEndPointType) {
+    let thisURL: any = endPointType;
+    thisURL = thisURL.replace('{symbol}', symbol);
+    thisURL = thisURL.replace('{token}', this.token);
+    return thisURL;
+  }
 
+  public getIexKeyStats(symbol) {
+    const url: any = this.getApiUrl(symbol, iexEndPointType.keyStats);
+    return this.httpClient.get(url);
+  }
 
   public getProfile(symbol) {
-
-    let thisURL: any;
-    thisURL = this.profileURL;
-    thisURL = thisURL.replace('{symbol}', symbol);
-    thisURL = thisURL.replace('{token}', this.tokenSuffix);
-    thisURL = thisURL.replace('&', '?');
-
-    return   this.httpClient.get(thisURL);
-  
+    const url: any = this.getApiUrl(symbol, iexEndPointType.profile);
+    return this.httpClient.get(url);
   }
   public getTops(symbol) {
-
-    return this.httpClient.get(this.topsURL + symbol + this.tokenSuffix);
+    const url: any = this.getApiUrl(symbol, iexEndPointType.tops);
+    console.log(url);
+    return this.httpClient.get(url);
   }
 
   public getIexPrevious(symbol) {
-
-    let thisURL: any;
-    thisURL = this.iexPreviousURL;
-    thisURL = thisURL.replace('{symbol}', symbol);
-    thisURL = thisURL.replace('{token}', this.tokenSuffix);
-    thisURL = thisURL.replace('&', '?');
-    return this.httpClient.get(thisURL);
+    const url: any = this.getApiUrl(symbol, iexEndPointType.previous);
+    console.log(url);
+    return this.httpClient.get(url);
 
   }
 
