@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
       if (symbol.length !== 0) {
 
         this.iexService.getProfile(symbol).subscribe((res: any) => {
-          console.log(res);
+       
           this.iexProfileResponse = res;
         });
 

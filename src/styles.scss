@@ -61,9 +61,12 @@ position:relative;
 
         .stock-grid-item-bottom {
             float:left;
+
             margin-top:32%;
             clear:left;
             width:100%;
+
+            .btn{width:100%}
 
      
             @include breakpoint(sm) { 
