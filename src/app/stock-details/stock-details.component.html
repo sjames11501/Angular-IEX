@@ -1,0 +1,72 @@
+<div *ngIf="StockProfile" class="mt-4 stock-details-page">
+
+
+
+    <div class="jumbotron">
+        <h1>{{StockProfile.companyName}}  <span class="stock-symbol">({{StockProfile.symbol}})</span></h1>
+       
+
+
+
+
+        <div class="col-lg-12">
+            <div class="stock-details-attribute col-lg-12 mb-4">
+     
+                <article>{{StockProfile.description}}</article>
+
+            </div>
+
+
+
+            <div class="col-lg-6 col-xs-12">
+
+                <div class="row mb-4">
+                    <div class="col-md-6 col-sm-6 col-6">
+                        <h6>CEO</h6>
+                        <span>{{StockProfile.CEO}}</span>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-6">
+                        <h6>Exchange</h6>
+                        <span>{{StockProfile.exchange}}</span>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6 col-sm-6 col-6">
+                        <h6>Sector</h6>
+                        <span>{{StockProfile.sector}}</span>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-6">
+                        <h6>Industry</h6>
+                        <span>{{StockProfile.industry}}</span>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6 col-sm-6 ">
+                        <h6>Website</h6>
+                        <span>{{StockProfile.website}}</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+<!---
+<div *ngIf="StockProfile" class="mt-3">
+    <h6 class="font-weight-bold">Raw Response:</h6>
+    <code *ngFor="let item of StockProfile | keyvalue">
+                {{item.key}}:{{item.value}}
+              </code>
+</div> -->
