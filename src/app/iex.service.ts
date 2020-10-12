@@ -9,7 +9,7 @@ import { iexEndPointType } from './iex.endpoints';
   providedIn: 'root'
 })
 export class IexService {
-  private token = 'pk_985dc1b2080147c2948e4bd7acb90602';
+  private token = 'REMOVED';
 
 
   constructor(private httpClient: HttpClient) { }
